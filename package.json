@@ -2,6 +2,6 @@
   "name": "ingenii-expense-landing",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx serve . -l 3000"
+    "start": "npx serve ingenii-expense-landing -l 3000"
   }
 }
