@@ -1351,84 +1351,100 @@
       <h2 class="section-heading">Mirá cómo funciona <em>en la práctica.</em></h2>
       <p class="section-sub" style="margin: 0 auto;">Un recorrido real del flujo completo, desde que el usuario envía el comprobante hasta que el gasto queda registrado.</p>
     </div>
-
-    <div class="reveal" style="max-width: 700px; margin: 0 auto;">
-
-      <!-- Video wrapper -->
-      <div id="video-container" style="
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
+    <div class="reveal" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+      <!-- Thumbnail pequeño -->
+      <div id="video-thumb" onclick="openVideoModal()" style="
+        width: 190px; border-radius: 30px; overflow: hidden;
         border: 1px solid var(--border2);
-        box-shadow: 0 0 80px rgba(124,92,252,0.18), 0 40px 80px rgba(0,0,0,0.5);
-        background: #000;
-        aspect-ratio: 9/16;
-        max-height: 600px;
-        margin: 0 auto;
-        cursor: pointer;
-      ">
-        <!-- Poster / placeholder shown before play -->
-        <div id="video-poster" style="
-          position: absolute; inset: 0;
-          background: linear-gradient(160deg, #0e0d14 0%, #14121e 50%, #0a0a10 100%);
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center; gap: 16px;
-          z-index: 2;
-          transition: opacity .4s ease;
-        ">
-          <div style="
-            width: 72px; height: 72px; border-radius: 50%;
-            background: var(--purple);
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 40px rgba(124,92,252,0.5);
-            transition: transform .2s ease;
-          " id="play-btn-circle">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <path d="M9 6l13 7-13 7V6z" fill="white"/>
-            </svg>
-          </div>
-          <span style="font-size: 14px; color: var(--muted); font-family: 'Poppins', sans-serif;">Reproducir demo</span>
-          <!-- decorative phone outline in bg -->
-          <div style="
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0.04; pointer-events: none;
-          ">
-            <svg width="160" height="280" viewBox="0 0 160 280" fill="none">
-              <rect x="4" y="4" width="152" height="272" rx="28" stroke="white" stroke-width="6"/>
-              <rect x="52" y="14" width="56" height="12" rx="6" fill="white"/>
-            </svg>
-          </div>
-        </div>
-
-        <!-- The actual video — portrait format for phone recording -->
-        <video
-          id="demo-video"
-          style="width: 100%; height: 100%; display: block; object-fit: cover;"
-          playsinline
-          preload="none"
-          loop>
+        box-shadow: 0 0 60px rgba(124,92,252,0.22), 0 20px 40px rgba(0,0,0,0.5);
+        cursor: pointer; position: relative;
+        aspect-ratio: 9/16; background: #000;
+        transition: transform .25s ease, box-shadow .25s ease;
+      "
+        onmouseenter="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 90px rgba(124,92,252,0.4), 0 30px 60px rgba(0,0,0,0.65)'"
+        onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 0 60px rgba(124,92,252,0.22), 0 20px 40px rgba(0,0,0,0.5)'">
+        <video style="width:100%;height:100%;object-fit:cover;pointer-events:none;" muted playsinline preload="metadata">
           <source src="demo-flow.mp4" type="video/mp4">
         </video>
+        <!-- Play overlay -->
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.38);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+          <div style="width:58px;height:58px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(124,92,252,0.7);">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M8 5l11 6-11 6V5z" fill="white"/></svg>
+          </div>
+          <span style="font-size:12px;color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-weight:500;">Ver demo</span>
+        </div>
       </div>
-
-      <!-- Caption pills -->
-      <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted);">
-          <span style="color: var(--accent);">✓</span> Flujo real de WhatsApp
-        </div>
-        <div style="display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted);">
-          <span style="color: var(--accent);">✓</span> Extracción automática de datos
-        </div>
-        <div style="display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted);">
-          <span style="color: var(--accent);">✓</span> Registro y notificación
-        </div>
+      <!-- Pills -->
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);"><span style="color:var(--accent);">✓</span> Flujo real de WhatsApp</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);"><span style="color:var(--accent);">✓</span> Extracción automática de datos</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);"><span style="color:var(--accent);">✓</span> Registro y notificación</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- VIDEO MODAL -->
+<div id="video-modal-overlay" onclick="closeVideoModal(event)" style="
+  position:fixed;inset:0;z-index:998;
+  background:rgba(0,0,0,0);
+  backdrop-filter:blur(0px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;pointer-events:none;
+  transition:background .35s ease, backdrop-filter .35s ease;
+">
+  <div id="video-modal-box" style="
+    width:100%;max-width:360px;
+    border-radius:28px;overflow:hidden;
+    border:1px solid var(--border2);
+    box-shadow:0 0 100px rgba(124,92,252,0.3), 0 40px 80px rgba(0,0,0,0.7);
+    background:#000;aspect-ratio:9/16;
+    position:relative;max-height:88vh;
+    transform:scale(0.25);opacity:0;
+    transition:transform .45s cubic-bezier(0.34,1.56,0.64,1), opacity .3s ease;
+  ">
+    <button onclick="closeVideoModalBtn()" style="
+      position:absolute;top:12px;right:12px;z-index:10;
+      width:32px;height:32px;border-radius:50%;
+      background:rgba(0,0,0,0.65);border:0.5px solid rgba(255,255,255,0.2);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;
+    ">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l10 10M11 1L1 11"/></svg>
+    </button>
+    <video id="modal-video" style="width:100%;height:100%;object-fit:cover;display:block;" playsinline controls>
+      <source src="demo-flow.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
 <script>
+function openVideoModal() {
+  const overlay = document.getElementById('video-modal-overlay');
+  const box = document.getElementById('video-modal-box');
+  const video = document.getElementById('modal-video');
+  overlay.style.pointerEvents = 'all';
+  overlay.style.background = 'rgba(0,0,0,0.82)';
+  overlay.style.backdropFilter = 'blur(10px)';
+  requestAnimationFrame(() => { box.style.transform = 'scale(1)'; box.style.opacity = '1'; });
+  setTimeout(() => { video.play(); }, 420);
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoModalBtn() { _closeModal(); }
+function closeVideoModal(e) { if (e.target.id === 'video-modal-overlay') _closeModal(); }
+function _closeModal() {
+  const overlay = document.getElementById('video-modal-overlay');
+  const box = document.getElementById('video-modal-box');
+  const video = document.getElementById('modal-video');
+  box.style.transform = 'scale(0.25)';
+  box.style.opacity = '0';
+  overlay.style.background = 'rgba(0,0,0,0)';
+  overlay.style.backdropFilter = 'blur(0px)';
+  setTimeout(() => { overlay.style.pointerEvents = 'none'; video.pause(); video.currentTime = 0; }, 380);
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeModal(); });
+</script>
 (function() {
   const container = document.getElementById('video-container');
   const poster    = document.getElementById('video-poster');
