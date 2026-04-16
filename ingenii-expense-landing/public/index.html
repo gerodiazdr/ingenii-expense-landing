@@ -1394,14 +1394,14 @@
   transition:background .35s ease, backdrop-filter .35s ease;
 ">
   <div id="video-modal-box" style="
-    width:100%;max-width:360px;
-    border-radius:28px;overflow:hidden;
-    border:1px solid var(--border2);
-    box-shadow:0 0 100px rgba(124,92,252,0.3), 0 40px 80px rgba(0,0,0,0.7);
-    background:#000;aspect-ratio:9/16;
-    position:relative;max-height:88vh;
-    transform:scale(0.25);opacity:0;
-    transition:transform .45s cubic-bezier(0.34,1.56,0.64,1), opacity .3s ease;
+   height:88vh;width:auto;max-width:92vw;
+border-radius:28px;overflow:hidden;
+border:1px solid var(--border2);
+box-shadow:0 0 100px rgba(124,92,252,0.3), 0 40px 80px rgba(0,0,0,0.7);
+background:#000;aspect-ratio:9/16;
+position:relative;
+transform:scale(0.25);opacity:0;
+transition:transform .45s cubic-bezier(0.34,1.56,0.64,1), opacity .3s ease;
   ">
     <button onclick="closeVideoModalBtn()" style="
       position:absolute;top:12px;right:12px;z-index:10;
@@ -1444,37 +1444,7 @@ function _closeModal() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') _closeModal(); });
-</script>
-(function() {
-  const container = document.getElementById('video-container');
-  const poster    = document.getElementById('video-poster');
-  const video     = document.getElementById('demo-video');
-  const playCircle = document.getElementById('play-btn-circle');
 
-  if (!container || !video) return;
-
-  // hover effect on play button
-  playCircle.addEventListener('mouseenter', () => { playCircle.style.transform = 'scale(1.1)'; });
-  playCircle.addEventListener('mouseleave', () => { playCircle.style.transform = 'scale(1)'; });
-
-  container.addEventListener('click', function() {
-    if (video.paused) {
-      video.play();
-      poster.style.opacity = '0';
-      setTimeout(() => { poster.style.display = 'none'; }, 400);
-    } else {
-      video.pause();
-      poster.style.display = 'flex';
-      requestAnimationFrame(() => { poster.style.opacity = '1'; });
-    }
-  });
-
-  // show poster again when video ends (loop handles restart but just in case)
-  video.addEventListener('ended', () => {
-    poster.style.display = 'flex';
-    requestAnimationFrame(() => { poster.style.opacity = '1'; });
-  });
-})();
 </script>
 
 <!-- FORMULARIO DE CONTACTO -->
